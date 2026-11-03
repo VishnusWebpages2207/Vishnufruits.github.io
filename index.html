@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fruits & Their Uses</title>
+<style>
+:root{--green:#287a48;--dark:#183b2b;--cream:#fffaf0;--pink:#ffe6dc;--yellow:#fff0b8}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:#24352b}
+header{background:linear-gradient(120deg,#d9f3d7,#fff0bd);padding:42px 18px 34px;text-align:center}
+header .logo{font-size:48px}
+h1{font-size:clamp(2rem,6vw,3.3rem);margin:8px 0;color:var(--dark)}
+header p{font-size:1.08rem;margin:0 auto;max-width:650px;line-height:1.6}
+nav{position:sticky;top:0;background:#fff;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px;box-shadow:0 2px 10px #00000012;z-index:5}
+nav a{color:var(--green);text-decoration:none;font-weight:bold;padding:8px 12px;border-radius:20px}
+nav a:hover{background:#e7f5e8}
+main{max-width:1100px;margin:auto;padding:28px 16px}
+h2{color:var(--dark);font-size:1.8rem;margin:8px 0 18px}
+.intro{background:#fff;border-radius:18px;padding:20px;margin-bottom:28px;line-height:1.7;box-shadow:0 4px 18px #274d3010}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0 20px}
+input,select{font:inherit;padding:12px 14px;border:1px solid #c9d8ca;border-radius:12px;background:white;min-width:180px}
+input{flex:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:white;border-radius:18px;padding:18px;text-align:center;box-shadow:0 5px 18px #274d3010;border:1px solid #edf1e9;transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.emoji{font-size:58px;line-height:1.3}
+.card h3{margin:8px 0;color:var(--green);font-size:1.25rem}
+.card p{line-height:1.5;margin:8px 0;color:#4b5b50}
+.tag{display:inline-block;background:#eaf6e9;color:#286b40;border-radius:20px;padding:5px 10px;font-size:.82rem;margin-top:6px}
+section{margin:34px 0}
+.uses{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.use{background:var(--yellow);border-radius:16px;padding:18px;line-height:1.5}
+.use strong{display:block;font-size:1.08rem;margin-bottom:5px;color:#5a4820}
+.quiz{background:#e8f5e8;border-radius:20px;padding:22px}
+#question{font-size:1.2rem;font-weight:bold;margin:8px 0 16px}
+.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+button{font:inherit;border:0;border-radius:12px;padding:12px 16px;background:var(--green);color:white;cursor:pointer;font-weight:bold}
+button:hover{filter:brightness(.92)}
+.answers button{background:white;color:var(--dark);border:1px solid #b9d4bd}
+#feedback{min-height:28px;font-weight:bold;margin:14px 0 0}
+footer{text-align:center;padding:24px;background:#e5f1e4;color:#3b5944;line-height:1.6}
+.small{font-size:.9rem;color:#64756a}
+@media(max-width:500px){header{padding-top:28px}.controls input,.controls select{width:100%}nav{gap:2px}nav a{font-size:.9rem;padding:8px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" aria-hidden="true">🍎 🍌 🍇</div>
+  <h1>Fruits & Their Uses</h1>
+  <p>Discover colourful fruits, learn how they help our bodies, and explore the many ways we enjoy them every day!</p>
+</header>
+<nav>
+  <a href="#gallery">Fruit Gallery</a>
+  <a href="#uses">Uses of Fruits</a>
+  <a href="#quiz">Fun Quiz</a>
+</nav>
+<main>
+  <div class="intro">
+    <strong>Why are fruits important?</strong><br>
+    Fruits are tasty foods that provide vitamins, minerals, fibre and water. Eating a variety of fruits as part of a balanced diet helps us stay healthy. Wash fruits before eating them.
+  </div>
+
+  <section id="gallery">
+    <h2>🍓 Fruit Gallery</h2>
+    <p>Choose a fruit to learn about it. Use the search box to find your favourite!</p>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search for a fruit..." aria-label="Search fruits">
+      <select id="category" aria-label="Filter by type">
+        <option value="all">All fruits</option>
+        <option value="vitamin">Vitamin-rich</option>
+        <option value="water">Juicy fruits</option>
+        <option value="fibre">Fibre-rich</option>
+      </select>
+    </div>
+    <div class="grid" id="fruitGrid">
+      <article class="card" data-name="apple" data-type="fibre"><div class="emoji">🍎</div><h3>Apple</h3><p>Contains fibre and helps support healthy digestion. It makes a handy snack.</p><span class="tag">Fibre-rich</span></article>
+      <article class="card" data-name="banana" data-type="fibre"><div class="emoji">🍌</div><h3>Banana</h3><p>Provides energy, potassium and fibre. It can be eaten fresh or added to smoothies.</p><span class="tag">Energy-giving</span></article>
+      <article class="card" data-name="orange" data-type="vitamin"><div class="emoji">🍊</div><h3>Orange</h3><p>A good source of vitamin C, which supports the immune system. It is also juicy and refreshing.</p><span class="tag">Vitamin C</span></article>
+      <article class="card" data-name="mango" data-type="vitamin"><div class="emoji">🥭</div><h3>Mango</h3><p>Provides vitamins A and C. It is enjoyed fresh, in smoothies and in desserts.</p><span class="tag">Vitamin-rich</span></article>
+      <article class="card" data-name="grapes" data-type="water"><div class="emoji">🍇</div><h3>Grapes</h3><p>Contain water and useful plant compounds. They are often eaten fresh or dried as raisins.</p><span class="tag">Juicy fruit</span></article>
+      <article class="card" data-name="watermelon" data-type="water"><div class="emoji">🍉</div><h3>Watermelon</h3><p>Contains lots of water, making it a refreshing choice on warm days.</p><span class="tag">Hydrating</span></article>
+      <article class="card" data-name="pineapple" data-type="vitamin"><div class="emoji">🍍</div><h3>Pineapple</h3><p>Contains vitamin C and can be used in fruit salads, juices and cooked dishes.</p><span class="tag">Vitamin C</span></article>
+      <article class="card" data-name="strawberry" data-type="vitamin"><div class="emoji">🍓</div><h3>Strawberry</h3><p>Contains vitamin C and fibre. It adds colour and flavour to many dishes.</p><span class="tag">Vitamin C</span></article>
+      <article class="card" data-name="papaya" data-type="fibre"><div class="emoji">🍈</div><h3>Papaya</h3><p>Provides vitamins A and C, along with fibre. It is often eaten ripe and fresh.</p><span class="tag">Fibre-rich</span></article>
+      <article class="card" data-name="pear" data-type="fibre"><div class="emoji">🍐</div><h3>Pear</h3><p>Contains fibre and water. It can be eaten fresh or added to fruit salads.</p><span class="tag">Fibre-rich</span></article>
+      <article class="card" data-name="lemon" data-type="vitamin"><div class="emoji">🍋</div><h3>Lemon</h3><p>Rich in vitamin C. Its juice is used in drinks, dressings and cooking.</p><span class="tag">Vitamin C</span></article>
+      <article class="card" data-name="peach" data-type="water"><div class="emoji">🍑</div><h3>Peach</h3><p>A soft, juicy fruit that provides vitamins and can be enjoyed fresh or in desserts.</p><span class="tag">Juicy fruit</span></article>
+    </div>
+    <p id="noResults" class="small" hidden>No fruits found. Try another name.</p>
+  </section>
+
+  <section id="uses">
+    <h2>🥗 How do we use fruits?</h2>
+    <div class="uses">
+      <div class="use"><strong>🍹 Fresh juices</strong>Oranges, watermelon and sweet lime can be used to make refreshing drinks.</div>
+      <div class="use"><strong>🥣 Fruit salads</strong>Apples, bananas, grapes and papaya make colourful fruit salads.</div>
+      <div class="use"><strong>🍰 Desserts</strong>Mangoes, strawberries and pineapples can be added to cakes, puddings and ice cream.</div>
+      <div class="use"><strong>🥭 Pickles and cooking</strong>Raw mangoes and lemons are used in pickles, chutneys and other dishes.</div>
+      <div class="use"><strong>🍇 Dried fruits</strong>Grapes can be dried to make raisins. Dried fruits are useful snacks.</div>
+      <div class="use"><strong>💪 Healthy snacks</strong>Whole fruits are easy snacks that provide fibre, vitamins and minerals.</div>
+    </div>
+  </section>
+
+  <section id="quiz">
+    <h2>🎯 Test Your Fruit Knowledge!</h2>
+    <div class="quiz">
+      <p class="small">Choose the correct answer.</p>
+      <div id="question">Which fruit is famous for having lots of water?</div>
+      <div class="answers" id="answers">
+        <button data-answer="Apple">Apple</button>
+        <button data-answer="Watermelon">Watermelon</button>
+        <button data-answer="Banana">Banana</button>
+      </div>
+      <p id="feedback" aria-live="polite"></p>
+      <button id="next" type="button">Next question →</button>
+      <p class="small" id="score">Question 1 of 5</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <strong>Eat a rainbow of fruits! 🌈</strong><br>
+  <span class="small">A simple learning webpage about fruits and their everyday uses.</span>
+</footer>
+<script>
+const search = document.getElementById('search');
+const category = document.getElementById('category');
+const cards = [...document.querySelectorAll('.card')];
+const noResults = document.getElementById('noResults');
+function filterFruits(){
+  const term = search.value.trim().toLowerCase();
+  const type = category.value;
+  let shown = 0;
+  cards.forEach(card=>{
+    const matchName = card.dataset.name.includes(term);
+    const matchType = type === 'all' || card.dataset.type === type;
+    card.hidden = !(matchName && matchType);
+    if(!card.hidden) shown++;
+  });
+  noResults.hidden = shown !== 0;
+}
+search.addEventListener('input',filterFruits);
+category.addEventListener('change',filterFruits);
+
+const quiz = [
+ {q:'Which fruit is famous for having lots of water?',a:['Apple','Watermelon','Banana'],correct:'Watermelon',why:'Watermelon has a very high water content.'},
+ {q:'Which fruit is a good source of vitamin C?',a:['Orange','Potato','Rice'],correct:'Orange',why:'Oranges are well known for their vitamin C.'},
+ {q:'Which fruit can be dried to make raisins?',a:['Grapes','Mango','Pear'],correct:'Grapes',why:'Raisins are dried grapes.'},
+ {q:'Which yellow fruit is a handy source of energy?',a:['Lemon','Banana','Strawberry'],correct:'Banana',why:'Bananas provide carbohydrates and potassium.'},
+ {q:'Which fruit is often used to make pickles?',a:['Raw mango','Watermelon','Peach'],correct:'Raw mango',why:'Raw mango is commonly used in pickles.'}
+];
+let current=0, score=0, answered=false;
+const question=document.getElementById('question'), answers=document.getElementById('answers');
+const feedback=document.getElementById('feedback'), scoreText=document.getElementById('score');
+function showQuestion(){
+  answered=false; const item=quiz[current];
+  question.textContent=item.q; feedback.textContent='';
+  answers.innerHTML='';
+  item.a.forEach(answer=>{
+    const button=document.createElement('button');
+    button.textContent=answer; button.type='button';
+    button.addEventListener('click',()=>{
+      if(answered)return; answered=true;
+      if(answer===item.correct){score++;feedback.textContent='Correct! 🎉 '+item.why;}
+      else feedback.textContent='Good try! The correct answer is '+item.correct+'. '+item.why;
+      scoreText.textContent='Score: '+score+' / '+quiz.length;
+      [...answers.children].forEach(b=>b.disabled=true);
+    });
+    answers.appendChild(button);
+  });
+  scoreText.textContent='Question '+(current+1)+' of '+quiz.length+' • Score: '+score;
+}
+document.getElementById('next').addEventListener('click',()=>{
+  if(!answered){feedback.textContent='Choose an answer first!';return;}
+  current++;
+  if(current>=quiz.length){
+    question.textContent='You completed the quiz! 🌟';
+    answers.innerHTML='';
+    feedback.textContent='Your final score: '+score+' out of '+quiz.length+'. Well done!';
+    scoreText.textContent='Quiz complete';
+    document.getElementById('next').textContent='Play again ↻';
+    document.getElementById('next').onclick=()=>{
+      current=0;score=0;document.getElementById('next').textContent='Next question →';
+      document.getElementById('next').onclick=null;showQuestion();
+    };
+  } else showQuestion();
+});
+showQuestion();
+</script>
+</body>
+</html>
